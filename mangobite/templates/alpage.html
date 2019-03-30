@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Threat Detection</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style type="text/css">
+
+    body
+		{
+			margin: 0px;
+			padding: 0px;
+			background: url("{{tbak.image.url}}");
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+	section
+	{
+			margin: 10px;
+			padding: 10px 20px;
+	}
+
+	h1
+	{
+		text-underline-position: under;
+	}
+
+	h4
+	{
+		color: darkgreen;
+	}
+
+	#cure
+	{
+		color: maroon;
+	}
+
+	</style>
+</head>
+<body><!-- background="https://s.w-x.co/thinkstockphotos-476743286_10.jpg">-->
+	<br><center><h1><u>Threat Detection</u></h1></center><br>
+	<section>
+		<div class='form-group row'>
+			<div class="col-sm-6">
+				<center><img src="{{pic}}" height=300></center>
+			</div>
+			<div class="col-sm-6" style="text-align: center">
+				<h4>Field Status : <span style="color: maroon;">{{status}}</span></h4>
+				<br>
+				<h4>Threats Observed: <span id="cure">{{keywords}}</span></h4>
+			</div>
+		</div>
+	<br><br>
+	<a href="{% url 'home' %}"><h5>Analyse Another Image!</h5></a>
+	</section>
+	
+</body>
+</html>

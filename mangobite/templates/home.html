@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AgriSmart</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <style type="text/css">
+
+    	body
+		{
+			margin: 0px;
+			padding: 0px;
+		}
+
+		section 
+		{
+			margin: 10px;
+			padding-top: 40px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-bottom: 30px;
+		}
+
+		hr
+		{
+			margin: 0px;
+			padding: 0px;	
+		}
+
+		#top
+		{
+			background: url("{{sky.image.url}}");
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: 0px;
+			padding: 0px 30px;
+			height: 100px; 
+		}
+    	
+    	#heading:
+    	{
+    		margin-top: 30px;
+			text-align: center;
+		}
+
+		#pic
+		{
+			font-size: 110%;
+			color: white;
+			background: url("{{bk.image.url}}");
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: 0px;
+		}
+
+		#alert
+		{
+			font-size: 110%;
+			color: white;
+			background: url("{{threatback.image.url}}");
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: 0px;
+		}
+
+		#crop
+		{
+			font-size: 120%;
+			color: white;
+			background: url("{{bg.image.url}}");
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: 0px;
+		}
+
+		#feed
+		{
+			font-size: 110%;
+			color: black;
+			background: url("{{fsec.image.url}}");
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: 0px;
+		}
+
+		label
+		{
+			font-weight: bold;
+		}
+
+    </style>
+</head>
+<body>
+
+	<section id='top'>
+	
+		<center><h1><span class="display-3">AgriSmart:</span> 
+		<span class="lead" style="font-size: 140%; position: relative; top: -5px;">Online Agriculture Expert</span></h1></center>
+	
+</section>
+
+	<div class="bd-example">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{obj1.image.url}}" height="500px" class="d-block w-100" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Crop Prediction</h5>
+          <p>AgriSmart analyses the soil characterstics, geographical location and weather forecast to predict the crop that'll be most appropriate.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{obj2.image.url}}" height="500px" class="d-block w-100" alt="Second slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Crop Nurturing</h5>
+          <p>Along with the crop to be grown, AgriSmart informs you about many general charactersstics of the crop, including which fertilizers are effective for it and in how much quantity should they be used.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{obj3.image.url}}" height="500px" class="d-block w-100" alt="Third slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Crop Protection</h5>
+          <p>AgriSmart analyses images of your crops and uses a highly accurate machine learning algorithm to inform you if it has been infected by a disease, as well as informs you of possible treatments to protect them.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<hr>
+
+	<section id="pic">
+		<div class="container form-group row">
+			<div class="col-sm-7">
+			<center><h2 class="form-group row">&nbsp&nbspDisease Identification</h2></center><br>
+				<div class="col-sm-12">
+					<p>Upload an image of the leaf of a plant or crop. AgriSmart's machine learning algorithm will help you identify any diseases that might be present.
+					</p>
+				</div>
+				
+			</div>	
+			<div class="col-sm-5">
+			<form action="{% url 'dpage' %}" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+					<label class="form-group row col-form-label">Upload Image : </label>
+					<div class="form-group row"><br><br><br>
+						<input type="file" accept="Image" class="form-control" name="input_img">
+					</div>
+				
+				<div class="form-group row">
+						<input type="submit" name="submit" class="btn btn-success" value="Analyse Image">
+					
+				</div>
+			</form>
+			</div>
+		</div>
+	</section>
+
+<hr>
+	<section id="crop"><center><h2 class="form-group row">&nbsp&nbsp&nbsp&nbspCrop Prediction</h2></center>
+			
+		<div class="container">
+			<div class='col-sm-12'>
+			</div>
+			<form action="{% url 'sapage' %}" method="GET">
+				<div class="form-group row">
+					<label class="rad col-sm-3 col-form-label">Enter values manually: </label>
+					<div class="col-sm-2">
+						<label>Yes</label>
+						<input type="radio" class="radio" name="Manual" value="Yes">
+					</div>
+					<div class="col-sm-1">	
+						<label>No</label>
+						<input type="radio"  class="radio" name="Manual" value="No">
+					</div>
+					<input type="hidden" name="manual" id="code">
+					<label class="col-sm-2 col-form-label">pH : </label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control man" name="ph" disabled>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Moisture : </label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control man" name="Humidity" disabled>
+					</div>
+					<label class="col-sm-2 col-form-label">Temperature : </label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control man" name="Temperature" disabled>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Irrigation : </label>
+					<div class="col-sm-4">
+						<select class="form-control" name="Irrigation">
+							<option>Low</option>
+							<option>Medium</option>
+							<option>High</option>
+						</select>
+					</div>
+					<label class="col-sm-2 col-form-label">State : </label>
+					<div class="col-sm-4">
+						<select id="state" class="form-control" name="State">
+							<option selected value="base">Please Select</option>
+							<option value="Andhra_Pradesh">Andhra Pradesh</option>
+							<option value="Arunachal_Pradesh">Arunachal Pradesh</option>
+							<option value="Assam">Assam</option>
+							<option value="Bihar">Bihar</option>
+							<option value="Chandigarh">Chandigarh</option>
+							<option value="Chhattisgarh">Chhattisgarh</option>
+							<option value="Dadra_and_Nagar_Haveli">Dadra and Nagar Haveli</option>
+							<option value="Daman_and_Diu">Daman and Diu</option>
+							<option value="Delhi">Delhi (NCT)</option>
+							<option value="Goa">Goa</option>
+							<option value="Gujarat">Gujarat</option>
+							<option value="Haryana">Haryana</option>
+							<option value="Himachal_Pradesh">Himachal Pradesh</option>
+							<option value="Jammu_and_Kashmir">Jammu and Kashmir</option>
+							<option value="Jharkhand">Jharkhand</option>
+							<option value="Karnataka">Karnataka</option>
+							<option value="Kerala">Kerala</option>
+							<option value="Lakshadweep">Lakshadweep</option>
+							<option value="Madhya_Pradesh">Madhya Pradesh</option>
+							<option value="Maharashtra">Maharashtra</option>
+							<option value="Manipur">Manipur</option>
+							<option value="Meghalaya">Meghalaya</option>
+							<option value="Mizoram">Mizoram</option>
+							<option value="Nagaland">Nagaland</option>
+							<option value="Odisha">Odisha</option>
+							<option value="Puducherry">Puducherry</option>
+							<option value="Punjab">Punjab</option>
+							<option value="Rajasthan">Rajasthan</option>
+							<option value="Sikkim">Sikkim</option>
+							<option value="Tamil_Nadu">Tamil Nadu</option>
+							<option value="Telangana">Telangana</option>
+							<option value="Tripura">Tripura</option>
+							<option value="Uttarakhand">Uttarakhand</option>
+							<option value="Uttar_Pradesh">Uttar Pradesh</option>
+							<option value="West_Bengal">West Bengal</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">District : </label>
+					<div class="col-sm-4">
+						<select id="district" class="form-control" name="District">
+							<option>Please choose from above</option>
+						</select>
+					</div>
+					<label class="col-sm-2 col-form-label">Season : </label>
+					<div class="col-sm-4">
+						<select class="form-control" name="Season">
+							<option>Kharif</option>
+							<option>Rabi</option>
+							<option>Whole Year</option>
+							<option>Summer</option>
+						</select>
+					</div>
+				</div><br><center>
+				<div class="col-sm-4">
+						<input type="submit" name="submit" class="btn btn-success" value="Predict Crops">
+				</div></center>
+					
+			</form>
+		</div>
+	</section>
+
+	<section id="alert">
+		<div class="container form-group row">
+			<div class="col-sm-7">
+			<center><h2 class="form-group row">&nbsp&nbspDanger Alert</h2></center><br>
+				<div class="col-sm-12">
+					<p>Upload periodic images of your fields or crop. AgriSmart's machine learning algorithm will identify any threats that are present in the environment and alert you of their presence.
+					</p>
+				</div>
+				
+			</div>	
+			<div class="col-sm-5">
+			<form action="{% url 'alpage' %}" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+					<label class="form-group row col-form-label">Upload Image : </label>
+					<div class="form-group row"><br><br><br>
+						<input type="file" accept="Image" class="form-control" name="back_img">
+					</div>
+				
+				<div class="form-group row">
+						<input type="submit" name="submit" class="btn btn-success" value="Detect Threats">
+					
+				</div>
+			</form>
+			</div>
+		</div>
+	</section>
+
+	<section id="feed">
+		<div class="container form-group row">
+			<div class="col-sm-7">
+			<center><h2 class="form-group row">&nbsp&nbspFeedback Centre</h2></center><br>
+				<div class="col-sm-12">
+					<p>Use the reference number that you were given at the time of your sample analysis to give us a feedback. AgriSmart's machine learning algorithm will improve based on your response, aloowing us to better help you in the future.
+					</p>
+				</div>
+				
+			</div>	
+			<div class="col-sm-5">
+			<form action="{% url 'fpage' %}" method="GET">
+					<label class="form-group row col-form-label">Reference No. : </label>
+					<div class="form-group row"><br><br><br>
+						<input type="text" class="form-control" name="ref">
+						<label class="rad col-sm-6 col-form-label">Enter feedback: </label>
+					<div class="col-sm-3">
+						<label>True</label>
+						<input type="radio" class="feed" name="feed" value="True">
+					</div>
+					<div class="col-sm-3">	
+						<label>False</label>
+						<input type="radio"  class="feed" name="feed" value="False">
+					</div>
+					</div>
+				<br>
+				
+				<div class="form-group row">
+						<input type="submit" name="submit" class="btn btn-success" value="Submit Feedback">
+					
+				</div>
+			</form>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script>
+
+	<script type="text/javascript">
+
+		$('.radio').click(function () {
+           if($(this).val()=="Yes")
+           {
+           	$(".man").prop('disabled',false);
+           	$("#code").attr('value','Yes');
+           }		
+           else 
+           	{
+           		$(".man").prop('disabled',true);
+           		$("#code").attr('value','No');
+           	}	
+       });
+
+		$("#state").change(function() {
+
+			var $dropdown = $(this);
+
+
+			$.getJSON("https://raw.githubusercontent.com/RohanSethi22/Indian-States-and-Districts/master/states_districts.json", function(data) {
+			
+				var $key = $dropdown.val();
+				var vals = [];
+									
+				switch($key) {
+					case 'Andhra_Pradesh':
+						vals = data.Andhra_Pradesh;
+						break;
+					case 'Arunachal_Pradesh':
+						vals = data.Arunachal_Pradesh;
+						break;
+					case 'Assam':
+						vals = data.Assam;
+						break;
+					case 'Bihar':
+						vals = data.Bihar;
+						break;
+					case 'Chandigarh':
+						vals = data.Chandigarh;
+						break;
+					case 'Chhattisgarh':
+						vals = data.Chhattisgarh;
+						break;
+					case 'Dadra_and_Nagar_Haveli':
+						vals = data.Dadra_and_Nagar_Haveli;
+						break;
+					case 'Daman_and_Diu':
+						vals = data.Daman_and_Diu;
+						break;
+					case 'Delhi':
+						vals = data.Delhi;
+						break;
+					case 'Goa':
+						vals = data.Goa;
+						break;
+					case 'Gujarat':
+						vals = data.Gujarat;
+						break;
+					case 'Haryana':
+						vals = data.Haryana;
+						break;
+					case 'Himachal_Pradesh':
+						vals = data.Himachal_Pradesh;
+						break;
+					case 'Jammu_and_Kashmir':
+						vals = data.Jammu_and_Kashmir;
+						break;
+					case 'Jharkhand':
+						vals = data.Jharkhand;
+						break;
+					case 'Karnataka':
+						vals = data.Karnataka;
+						break;
+					case 'Kerala':
+						vals = data.Kerala;
+						break;
+					case 'Lakshadweep':
+						vals = data.Lakshadweep;
+						break;
+					case 'Madhya_Pradesh':
+						vals = data.Madhya_Pradesh;
+						break;
+					case 'Maharashtra':
+						vals = data.Maharashtra;
+						break;
+					case 'Manipur':
+						vals = data.Manipur;
+						break;
+					case 'Meghalaya':
+						vals = data.Meghalaya;
+						break;
+					case 'Mizoram':
+						vals = data.Mizoram;
+						break;
+					case 'Nagaland':
+						vals = data.Nagaland;
+						break;
+					case 'Odisha':
+						vals = data.Odisha;
+						break;
+					case 'Puducherry':
+						vals = data.Puducherry;
+						break;
+					case 'Punjab':
+						vals = data.Punjab;
+						break;
+					case 'Rajasthan':
+						vals = data.Rajasthan;
+						break;
+					case 'Sikkim':
+						vals = data.Sikkim;
+						break;
+					case 'Tamil_Nadu':
+						vals = data.Tamil_Nadu;
+						break;
+					case 'Telangana':
+						vals = data.Telangana;
+						break;
+					case 'Tripura':
+						vals = data.Tripura;
+						break;
+					case 'Uttarakhand':
+						vals = data.Uttarakhand;
+						break;
+					case 'Uttar_Pradesh':
+						vals = data.Uttar_Pradesh;
+						break;
+					case 'West_Bengal':
+						vals = data.West_Bengal;
+						break;
+					case 'base':
+						vals = ['Please choose from above'];
+				}
+
+				var $secondChoice = $("#district");
+				$secondChoice.empty();
+				$.each(vals, function(index, value) {
+					$secondChoice.append("<option>" + value + "</option>");
+				});
+
+			});
+		});
+
+	</script>
+
+</body>
+</html>
